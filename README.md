@@ -17,7 +17,7 @@ Follow these steps to get the Soccer Club App up and running on your local machi
 
 ```bash
 Clone repository from GitHub
-git clone https://github.com/yourusername/soccer.git
+git clone https://github.com/liviuorehovschi/soccer.git
 
 Navigate to the cloned repository:
 cd soccer
