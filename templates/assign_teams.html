@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Assignment</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: url('/static/backgrounds/ronaldo2.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+        .container {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(47, 79, 79, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            max-width: 400px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="number"], input[type="submit"] {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .teams {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .team {
+            margin-bottom: 15px;
+            color: #0f0; /* Green color for visibility */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Assign Teams</h1>
+        <form action="/assign_teams" method="post">
+            <label>Enter player names (comma-separated):</label><br>
+            <input type="text" name="player_names"><br>
+            <label>Team size:</label><br>
+            <input type="number" name="team_size" min="4" max="6"><br>
+            <input type="submit" value="Assign Teams">
+        </form>
+        {% if teams %}
+            <div class="teams">
+                {% for team in teams %}
+                    <p class="team"><strong>Team {{ loop.index }}:</strong> {{ team|join(", ") }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

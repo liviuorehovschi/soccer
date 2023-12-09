@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Game Time</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-image: url('/static/backgrounds/ronaldo3.jpg');
+            background-position: right 25% center 25%; /* Image positioned higher up */
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+        .container {
+            position: absolute;
+            top: 55%; /* Container moved lower down */
+            left: 50%;
+            transform: translate(-50%, -10%);
+            background-color: rgba(47, 79, 79, 0.8); /* A dark slate gray-green color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            max-width: 400px;
+        }
+        #timer {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #0f0; /* Green color for the timer */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 1em;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2em;
+        }
+    </style>
+    <script>
+        var timer;
+        var isRunning = false;
+        var elapsedTime = 0;
+
+        function startTimer() {
+            if(isRunning) {
+                clearInterval(timer); // Stop the current timer
+            }
+            elapsedTime = 0; // Reset elapsed time
+            isRunning = true;
+            timer = setInterval(function() {
+                elapsedTime += 100; // Incrementing in milliseconds
+                document.getElementById('timer').innerText = formatTime(elapsedTime);
+            }, 100); // Update every 100 milliseconds
+        }
+
+        function stopResumeTimer() {
+            if (isRunning) {
+                clearInterval(timer);
+                isRunning = false;
+            } else {
+                isRunning = true;
+                timer = setInterval(function() {
+                    elapsedTime += 100; // Incrementing in milliseconds
+                    document.getElementById('timer').innerText = formatTime(elapsedTime);
+                }, 100); // Update every 100 milliseconds
+            }
+        }
+
+        function formatTime(milliseconds) {
+            var hours = Math.floor(milliseconds / 3600000);
+            var minutes = Math.floor((milliseconds % 3600000) / 60000);
+            var seconds = Math.floor((milliseconds % 60000) / 1000);
+            var millis = milliseconds % 1000;
+
+            return hours.toString().padStart(2, '0') + ':' +
+                   minutes.toString().padStart(2, '0') + ':' +
+                   seconds.toString().padStart(2, '0') + '.' +
+                   millis.toString().padStart(3, '0');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Track Game Time</h1>
+        <button onclick="startTimer()">Start Timer</button>
+        <button onclick="stopResumeTimer()">Stop/Resume Timer</button>
+        <p id="timer">00:00:00.000</p>
+    </div>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soccer Club App</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            text-align: center;
+            font-family: Poppins, sans-serif;
+            background-image: url('/static/backgrounds/ronaldo4.jpg');
+            background-position: right top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+        .container {
+            position: absolute;
+            top: 50%; /* Adjusted to position the container lower */
+            left: 60%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(47, 79, 79, 0.8); /* A dark slate gray-green color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            max-width: 400px;
+        }
+        h1 {
+            margin-top: 50px; /* Adjust the margin to position your heading */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            background-color: green;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Minerva Soccer Club App</h1>
+
+        <ul>
+            <li><a href="/assign_teams">Assign Teams</a></li>
+            <li><a href="/coin_toss">Coin Toss</a></li>
+            <li><a href="/track_time">Track Game Time</a></li>
+        </ul>
+    </div>
+</body>
+</html>
